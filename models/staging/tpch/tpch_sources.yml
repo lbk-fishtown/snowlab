@@ -9,38 +9,8 @@ sources:
     freshness: # make this a warning as this is static data
           warn_after: {count: 12, period: hour}
     loaded_at_field: current_timestamp() - interval '6.3 hours' #this is for demo purposes
+
     tables:
-      - name: orders
-        description: main order tracking table
-        
-        columns:
-          - name: o_orderkey
-            description: SF*1,500,000 are sparsely populated
-            tests: 
-              - unique
-              - not_null
-                  
-          - name: o_custkey
-            description: Foreign Key to C_CUSTKEY
-            tests:
-              - relationships:
-                  to: source('tpch', 'customer')
-                  field: c_custkey
-          - name: o_orderstatus
-            description: status code of the order
-          - name: o_totalprice
-            description: raw price
-          - name: o_orderdate
-            description: date the order was made
-          - name: o_orderpriority
-            description: code associated with the order
-          - name: o_clerk
-            description: id of the clerk
-          - name: o_shippriority
-            description: numeric representation of the shipping priority, zero being the default
-          - name: o_comment
-            description: '{{ doc("comment") }}'
-          
       - name: customer
         description: main customer table
         columns:
