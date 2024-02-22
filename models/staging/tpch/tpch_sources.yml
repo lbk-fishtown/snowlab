@@ -11,6 +11,14 @@ sources:
     loaded_at_field: current_timestamp() - interval '6.3 hours' #this is for demo purposes
 
     tables:
+      - name: orders
+        description: contains our orders
+        columns:
+          - name: o_orderkey
+            tests:
+              - not_null
+              - unique
+
       - name: customer
         description: main customer table
         columns:
